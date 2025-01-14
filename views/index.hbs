@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <main class="min-h-screen bg-stone-900">
+        {{> nav}}
+
+        <section class="w-4/6 m-auto rounded flex flex-col mt-12 p-5 gap-5">
+            <h1 class="text-2xl font-bold text-white">Collections</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {{#if collections}}
+                {{#each collections}}
+                <div class="bg-[#1E293B] text-white w-[80%] py-3 px-4 cursor-pointer rounded-xl hover:scale-[.97]  hover:bg-[#27354d]">
+                    <a href="/collection/{{id}}">
+                    <div class="w-8 bg-slate-50 p-1 rounded-xl">
+                        <img src="/icons/task.png" alt="" class="w-full">
+                    </div>
+                    <div class="mt-14 flex">
+                        <div class="mt-3">
+                            <h3 class="font-bold text-xl">{{name}}</h3>
+                            <p class="text-sm text-slate-400"><span id="isDone">{{isDone}}</span>/<span id="tasks">{{tasks}}</span> done</p>
+                        </div>
+                        <div class="w-10 ml-auto mt-5" id="checkContainer">
+                            <i class="fa-solid fa-clock text-3xl font-bold bg-gradient-to-b from-purple-500 via-purple-700 to-purple-400 text-transparent bg-clip-text"></i>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                {{/each}}
+                {{/if}}
+                <div class="border-[#1E293B] border-8 border-solid text-white w-[80%] py-3 px-4 rounded-xl flex justify-center items-center h-[200px]">
+                    <div class="bg-gradient-to-r from-stone-700 via-stone-800 to-purple-900 px-2 py-1 rounded-2xl cursor-pointer hover:scale-[.95]">
+                        <i class="fa-solid fa-plus text-4xl text-slate-400" id="addCollection"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/assets/js/alert-modal.js"></script>
+    <script type="module" src="/js/navbar.js"></script>
+    <script type="module" src="/js/index.js"></script>
+</body>
+</html>
