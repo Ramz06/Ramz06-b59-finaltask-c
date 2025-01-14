@@ -1,4 +1,4 @@
-const authValidation = require("../validation/auth-validation")
+const authValidation = require("../validattion/auth-validation")
 const { Collection, Tasks } = require("../../models")
 
 
